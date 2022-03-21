@@ -1,0 +1,16 @@
+{
+    "name": "cocos-build-vue",
+    "title": "cocos-build-vue",
+    "package_version": 2,
+    "version": "1.0.0",
+    "author": "Cocos Creator",
+    "description": "i18n:cocos-build-vue.description",
+    "contributions": {
+        "builder": "./dist/builder.js"
+    },
+    "dependencies": {
+        "@types/electron": "^1.6.10",
+        "@types/fs-extra": "^5.0.4"
+    },
+    "devDependencies": {}
+}
