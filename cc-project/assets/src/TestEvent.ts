@@ -13,9 +13,15 @@ export default class TestEvent extends Component {
                 });
                 break;
             case 2:
-                VueGameBridge.callHandler(EnumBusEventType.getToken, 'store', () => {
-                    console.log('getstore success');
+                VueGameBridge.callHandler(EnumBusEventType.getToken, 'token', () => {
+                    console.log('getToken success');
                 });
+                break;
+            case 3:
+                VueGameBridge.callHandler(EnumBusEventType.backHome, 'backHome', () => {
+                    console.log('backHome success');
+                });
+                VueGameBridge.emit(EnumBusEventType.backHome);
                 break;
         }
     }
