@@ -42,7 +42,7 @@ export function loadJsList(jsList: Array<string>) {
  * @param url
  * @returns
  */
-export function loadJSFile(url: string) {
+export function loadJSFile(url: string, prefix?: string) {
     return new Promise((resolve, reject) => {
         let err: any;
 
@@ -71,7 +71,11 @@ export function loadJSFile(url: string) {
                 resolve(null);
             }
         });
-        script.src = url;
+        if (prefix) {
+            script.src = `${prefix}${url}`;
+        } else {
+            script.src = url;
+        }
         document.head.appendChild(script);
     });
 }

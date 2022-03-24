@@ -4,6 +4,7 @@ export enum EnumBusEventType {
     getToken = 'getToken',
     getUserInfo = 'getUserInfo',
     getStore = 'getStore',
+    backHome = 'backHome'
 }
 const global = window as any;
 

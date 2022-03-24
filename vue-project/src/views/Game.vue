@@ -3,6 +3,7 @@
     import { onMounted, onBeforeUnmount, onActivated, onDeactivated } from 'vue';
     import CCApplication from '../utils/cc/CCApplication';
     import settings from '../data/cc-project-game-settings.json';
+    import router from '../router';
 
     let gameApp: CCApplication | undefined;
     const onGameStart = (data: any) => {
@@ -12,6 +13,9 @@
     const onTestEvent = () => {
         VueGameBridge.callHandler('vuedivclick');
     };
+    const onBackHome = ()=>{
+        router.push('/');
+    }
 
     onMounted(() => {
         gameApp = new CCApplication('GameCanvas', 'cc-project', settings);
@@ -25,11 +29,13 @@
 
     onActivated(() => {
         VueGameBridge.on(EnumBusEventType.gameStart, onGameStart);
+        VueGameBridge.on(EnumBusEventType.backHome, onBackHome);
         gameApp?.resumeAndRestart();
     });
 
     onDeactivated(() => {
         VueGameBridge.remove(EnumBusEventType.gameStart, onGameStart);
+        VueGameBridge.remove(EnumBusEventType.backHome, onBackHome);
         gameApp?.pauseAndRelease();
     });
 </script>
